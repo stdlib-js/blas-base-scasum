@@ -35,32 +35,38 @@ limitations under the License.
 
 > Compute the sum of the absolute values of the real and imaginary components of a single-precision complex floating-point vector.
 
-<section class="installation">
 
-## Installation
-
-```bash
-npm install @stdlib/blas-base-scasum
-```
-
-Alternatively,
-
--   To load the package in a website via a `script` tag without installation and bundlers, use the [ES Module][es-module] available on the [`esm`][esm-url] branch (see [README][esm-readme]).
--   If you are using Deno, visit the [`deno`][deno-url] branch (see [README][deno-readme] for usage intructions).
--   For use in Observable, or in browser/node environments, use the [Universal Module Definition (UMD)][umd] build available on the [`umd`][umd-url] branch (see [README][umd-readme]).
-
-The [branches.md][branches-url] file summarizes the available branches and displays a diagram illustrating their relationships.
-
-To view installation and usage instructions specific to each branch build, be sure to explicitly navigate to the respective README files on each branch, as linked to above.
-
-</section>
 
 <section class="usage">
 
 ## Usage
 
+To use in Observable,
+
 ```javascript
-var scasum = require( '@stdlib/blas-base-scasum' );
+scasum = require( 'https://cdn.jsdelivr.net/gh/stdlib-js/blas-base-scasum@umd/browser.js' )
+```
+
+To vendor stdlib functionality and avoid installing dependency trees for Node.js, you can use the UMD server build:
+
+```javascript
+var scasum = require( 'path/to/vendor/umd/blas-base-scasum/index.js' )
+```
+
+To include the bundle in a webpage,
+
+```html
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/blas-base-scasum@umd/browser.js"></script>
+```
+
+If no recognized module system is present, access bundle contents via the global scope:
+
+```html
+<script type="text/javascript">
+(function () {
+    window.scasum;
+})();
+</script>
 ```
 
 #### scasum( N, cx, strideX )
@@ -158,11 +164,16 @@ var out = scasum.ndarray( 2, cx, 1, 1 );
 
 <!-- eslint no-undef: "error" -->
 
-```javascript
-var discreteUniform = require( '@stdlib/random-base-discrete-uniform' );
-var filledarrayBy = require( '@stdlib/array-filled-by' );
-var Complex64 = require( '@stdlib/complex-float32-ctor' );
-var scasum = require( '@stdlib/blas-base-scasum' );
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/random-base-discrete-uniform@umd/browser.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/array-filled-by@umd/browser.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/complex-float32-ctor@umd/browser.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/blas-base-scasum@umd/browser.js"></script>
+<script type="text/javascript">
+(function () {
 
 function rand() {
     return new Complex64( discreteUniform( 0, 10 ), discreteUniform( -5, 5 ) );
@@ -174,6 +185,11 @@ console.log( cx.toString() );
 // Compute the sum of the absolute values of real and imaginary components:
 var out = scasum( cx.length, cx, 1 );
 console.log( out );
+
+})();
+</script>
+</body>
+</html>
 ```
 
 </section>
@@ -182,98 +198,7 @@ console.log( out );
 
 <!-- C interface documentation. -->
 
-* * *
 
-<section class="c">
-
-## C APIs
-
-<!-- Section to include introductory text. Make sure to keep an empty line after the intro `section` element and another before the `/section` close. -->
-
-<section class="intro">
-
-</section>
-
-<!-- /.intro -->
-
-<!-- C usage documentation. -->
-
-<section class="usage">
-
-### Usage
-
-```c
-#include "stdlib/blas/base/scasum.h"
-```
-
-#### c_scasum( N, \*CX, strideX )
-
-Computes the sum of the absolute values of the real and imaginary components of a single-precision complex floating-point vector.
-
-```c
-const float cx[] = { 0.3f, 0.1f, 0.5f, 0.0f, 0.0f, 0.5f, 0.0f, 0.2f };
-
-float out = c_scasum( 4, (void *)cx, 1 );
-// returns 1.6f
-```
-
-The function accepts the following arguments:
-
--   **N**: `[in] CBLAS_INT` number of indexed elements.
--   **CX**: `[in] void*` input array.
--   **strideX**: `[in] CBLAS_INT` index increment for `CX`.
-
-```c
-float c_scasum( const CBLAS_INT N, const void *CX, const CBLAS_INT strideX );
-```
-
-</section>
-
-<!-- /.usage -->
-
-<!-- C API usage notes. Make sure to keep an empty line after the `section` element and another before the `/section` close. -->
-
-<section class="notes">
-
-</section>
-
-<!-- /.notes -->
-
-<!-- C API usage examples. -->
-
-<section class="examples">
-
-### Examples
-
-```c
-#include "stdlib/blas/base/scasum.h"
-#include <stdio.h>
-
-int main( void ) {
-    // Create a strided array of interleaved real and imaginary components:
-    const float cx[] = { 1.0f, 2.0f, 3.0f, 4.0f, 5.0f, 6.0f, 7.0f, 8.0f };
-
-    // Specify the number of elements:
-    const int N = 4;
-
-    // Specify stride length:
-    const int strideX = 1;
-
-    // Compute the sum of the absolute values of real and imaginary components:
-    float out = c_scasum( N, (void *)cx, strideX );
-
-    // Print the result:
-    printf( "out: %f\n", out );
-}
-```
-
-</section>
-
-<!-- /.examples -->
-
-</section>
-
-<!-- /.c -->
 
 <!-- Section for related `stdlib` packages. Do not manually edit this section, as it is automatically populated. -->
 
@@ -359,7 +284,7 @@ Copyright &copy; 2016-2024. The Stdlib [Authors][stdlib-authors].
 
 [scasum]: https://www.netlib.org/lapack/explore-html/d5/d72/group__asum_ga89c76eef329f84ba9ed106b34fedab16.html#ga89c76eef329f84ba9ed106b34fedab16
 
-[@stdlib/array/complex64]: https://github.com/stdlib-js/array-complex64
+[@stdlib/array/complex64]: https://github.com/stdlib-js/array-complex64/tree/umd
 
 [mdn-typed-array]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray
 
