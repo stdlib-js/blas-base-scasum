@@ -4,7 +4,7 @@
 
 <section class="release" id="unreleased">
 
-## Unreleased (2026-07-29)
+## Unreleased (2026-08-09)
 
 <section class="commits">
 
@@ -12,6 +12,7 @@
 
 <details>
 
+-   [`3208321`](https://github.com/stdlib-js/stdlib/commit/320832192c8d32b18d24c7342ba1cf03cc5affea) - **bench:** refactor to use dynamic memory allocation [(#14099)](https://github.com/stdlib-js/stdlib/pull/14099) _(by Philipp Burckhardt, Athan Reines)_
 -   [`ec68ca7`](https://github.com/stdlib-js/stdlib/commit/ec68ca7cc35210db29a028d561ec71968e2ff753) - **docs:** fix TSDoc errors in `blas` declarations [(#12529)](https://github.com/stdlib-js/stdlib/pull/12529) _(by Philipp Burckhardt, Athan Reines)_
 -   [`f9d1409`](https://github.com/stdlib-js/stdlib/commit/f9d140985e169d34f4e66bd770dc675ea28588a3) - **docs:** add missing JSDoc comment _(by Athan Reines)_
 -   [`82e5efd`](https://github.com/stdlib-js/stdlib/commit/82e5efd18ff2c2d276e88e4384e49d5f32c24959) - **bench:** refactor to use string interpolation in `blas/base/scasum` [(#10430)](https://github.com/stdlib-js/stdlib/pull/10430) _(by Shubham)_
